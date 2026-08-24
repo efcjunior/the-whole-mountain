@@ -25,16 +25,26 @@ Primary input:
 
 Do not modify files inside `docs/incoming/`.
 
-## Outputs
+## Files You May Change
 
-Create or update:
-
+- `docs/status.md`
 - `docs/product/overview.md`
 - `docs/requirements/software-requirements.md`
-
-Optional, only when needed:
-
 - `docs/requirements/open-questions.md`
+
+## Files You Must Not Change
+
+- `docs/incoming/`
+- `repos/`
+- application or prototype source code
+
+## When You May Act
+
+You may work when `docs/status.md` shows documentation or requirements work assigned to Documentation Analyst.
+
+When a module has enough confirmed requirements for prototype validation, update that module in `docs/status.md` to `Ready for Prototype`.
+
+If unresolved decisions prevent useful prototyping or requirements work, update the relevant status to `Blocked` and record the issue in `docs/requirements/open-questions.md`.
 
 ## Rules
 
@@ -61,7 +71,8 @@ Optional, only when needed:
 7. Identify open questions that require human decision.
 8. Identify requirements that need prototype validation before development.
 9. Align requirements with the roadmap modules in `docs/product/roadmap.md`.
-10. Produce documentation that a developer can use without re-reading all incoming files.
+10. Update `docs/status.md` with current progress and next steps.
+11. Produce documentation that a developer can use without re-reading all incoming files.
 
 ## Requirement Structure
 

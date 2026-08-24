@@ -2,6 +2,10 @@
 
 Last updated: 2026-08-24
 
+This is the single source of truth for current project status.
+
+For status meanings and process rules, see `docs/process/validation-flow.md`.
+
 ## Current Phase
 
 Documentation analysis and validation planning.
@@ -16,23 +20,29 @@ The agreed interpretation is:
 - The mockups are the primary source for visual and UX intent.
 - The current mockups do not cover every functional requirement and should not be treated as the full implementation contract.
 
-## Current Decision
+## Current Work
 
-Before production development starts, requirements should be consolidated and validated through a dedicated prototype repository.
+| Area | Status | Owner | Next Step |
+| --- | --- | --- | --- |
+| Product overview | Draft | Documentation Analyst | Create `docs/product/overview.md`. |
+| Software requirements | Draft | Documentation Analyst | Create `docs/requirements/software-requirements.md` with stable requirement IDs. |
+| Open questions | Draft | Documentation Analyst | Create `docs/requirements/open-questions.md`. |
+| Prototype repository | Not Started | Human / Prototype Designer | Create or initialize `the-whole-mountain-prototype`. |
+| Prototype validation | Blocked | Prototype Designer | Wait until at least one module is marked `Ready for Prototype`. |
 
-Planned prototype repository name:
+## Module Validation Status
 
-- `the-whole-mountain-prototype`
-
-## Immediate Next Steps
-
-1. Create the product overview from `docs/incoming/`.
-2. Create consolidated software requirements with stable requirement IDs.
-3. Create open questions for owner validation.
-4. Create or initialize the prototype repository.
-5. Map requirements to prototype screens and flows.
-6. Use the prototype for Dale validation.
-7. Mark validated requirements as ready for development.
+| Order | Module | Status | Owner | Next Step |
+| --- | --- | --- | --- | --- |
+| 1 | Foundation and App Shell | Draft | Documentation Analyst | Extract requirements. |
+| 2 | Leader Registration | Draft | Documentation Analyst | Extract requirements and validation needs. |
+| 3 | Invitation System | Draft | Documentation Analyst | Extract requirements and edge states. |
+| 4 | Leader Dashboard and Weekly Meeting | Draft | Documentation Analyst | Extract requirements and weekly workflow. |
+| 5 | Disciple Dashboard | Draft | Documentation Analyst | Extract requirements and disciple workflow. |
+| 6 | Multiplication and Graduation | Draft | Documentation Analyst | Extract Lesson 24 and Lesson 37 requirements. |
+| 7 | Family Tree | Blocked | Documentation Analyst | Resolve active-vs-completed node behavior. |
+| 8 | Admin Operations | Draft | Documentation Analyst | Extract admin workflow requirements. |
+| 9 | Cross-Cutting Readiness | Draft | Documentation Analyst | Extract PWA, offline, i18n, accessibility, security, and observability requirements. |
 
 ## Known Early Issues
 
@@ -48,4 +58,4 @@ A new contributor or agent should read these files first:
 2. `docs/status.md`
 3. `docs/process/validation-flow.md`
 4. `docs/product/roadmap.md`
-5. `docs/agents/documentation-analyst.md`
+5. Relevant agent instructions in `docs/agents/`

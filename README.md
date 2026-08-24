@@ -22,6 +22,7 @@ A new contributor or agent should read these files first:
 2. `docs/process/validation-flow.md`
 3. `docs/product/roadmap.md`
 4. `docs/agents/documentation-analyst.md`
+5. `docs/agents/prototype-designer.md`
 
 ## Workspace Rule
 
