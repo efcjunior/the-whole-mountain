@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader Registration — The Whole Mountain</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="shared.css">
+<style>
+.reg-screen{padding:32px 22px 28px}
+.reg-mountain{display:flex;justify-content:center;margin:12px 0 22px}
+.reg-mountain svg{width:112px;height:74px}
+.reg-h{font-family:var(--font-voice);font-size:28px;color:var(--color-slate-dark);text-align:center;line-height:1.25;margin-bottom:10px}
+.reg-sub{font-family:var(--font-voice);font-style:italic;font-size:14px;color:var(--color-trail-brown);text-align:center;margin-bottom:24px;line-height:1.5}
+.reg-body{font-size:14px;color:var(--color-slate-mid);text-align:center;line-height:1.6;margin-bottom:24px;padding:0 8px}
+.reg-quote{font-family:var(--font-voice);font-style:italic;font-size:14px;color:var(--color-slate-mid);text-align:center;line-height:1.6;margin:24px 8px;padding:14px 0;border-top:0.5px solid var(--color-stone-light);border-bottom:0.5px solid var(--color-stone-light)}
+.rfield{margin-bottom:14px}
+.rlabel{display:block;font-size:12px;color:var(--color-slate-mid);margin-bottom:5px;font-weight:500}
+.rinput{width:100%;padding:11px;border:0.5px solid var(--color-stone-light);border-radius:8px;font-size:14px;background:white;font-family:inherit;color:var(--color-slate-dark)}
+.rinput:focus{outline:none;border-color:var(--color-mountain-green);box-shadow:0 0 0 3px rgba(44,62,45,.1)}
+.rhelper{font-size:12px;color:var(--color-slate-light);margin-top:14px;line-height:1.5;text-align:center}
+.rcheck{display:flex;align-items:flex-start;gap:8px;margin-bottom:12px;font-size:13px;color:var(--color-slate-mid);line-height:1.5}
+.rcheck input{margin-top:2px;flex-shrink:0}
+.rcheck a{color:var(--color-distant-blue);text-decoration:underline}
+.radio-group{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.radio-row{display:flex;align-items:center;gap:8px;padding:11px 14px;border:0.5px solid var(--color-stone-light);border-radius:8px;cursor:pointer;background:white}
+.radio-row.selected{border-color:var(--color-mountain-green);background:var(--color-dawn-cream)}
+.radio-row input{margin:0}
+.radio-row label{font-size:14px;color:var(--color-slate-dark);cursor:pointer;flex:1}
+.welcome-svg{width:140px;height:90px;margin:0 auto;display:block}
+.dob-grid{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:8px}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="nav-bar">
+  <a href="index.html">← All mockups</a>
+  <span class="nav-title">Mockup 1: Registration</span>
+</div>
+
+<div class="toggle-row" id="step-toggle">
+  <button class="active" onclick="showReg(1,this)">1. Welcome</button>
+  <button onclick="showReg(2,this)">2. Age</button>
+  <button onclick="showReg(3,this)">3. About you</button>
+  <button onclick="showReg(4,this)">4. Consent</button>
+  <button onclick="showReg(5,this)">5. Group</button>
+  <button onclick="showReg(6,this)">6. Begin</button>
+</div>
+
+<div class="phone">
+  <div class="reg-screen" id="reg-step-1">
+    <div class="reg-mountain">
+      <svg viewBox="0 0 112 74" aria-hidden="true">
+        <path d="M 10 64 L 40 18 L 54 32 L 70 12 L 102 64" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linejoin="round" opacity="0.7"/>
+        <line x1="6" y1="64" x2="106" y2="64" stroke="#8B7355" stroke-width="0.7" stroke-dasharray="1.5 3" opacity="0.5"/>
+        <circle cx="56" cy="62" r="3" fill="#2C3E2D"/>
+      </svg>
+    </div>
+    <div class="reg-h">The Whole Mountain</div>
+    <div class="reg-sub">a discipleship platform by Jesus Said Go</div>
+    <div class="reg-quote">The standard is one and fixed for every disciple; the next step is measured to each one.</div>
+    <button class="btn-primary" onclick="next(2)">Register your group</button>
+    <a class="btn-tertiary" href="#" onclick="event.preventDefault()">I have an invitation</a>
+  </div>
+
+  <div class="reg-screen" id="reg-step-2" style="display:none">
+    <div class="reg-h" style="font-size:24px">How old are you?</div>
+    <div class="reg-body">The Whole Mountain is for adults 18 and older. We honor the discipling of minors through families and local churches.</div>
+    <div class="rfield">
+      <label class="rlabel">Date of birth</label>
+      <div class="dob-grid">
+        <select class="rinput"><option>Month</option><option>January</option><option>February</option><option>March</option></select>
+        <select class="rinput"><option>Day</option><option>15</option><option>16</option></select>
+        <select class="rinput"><option>Year</option><option>1975</option><option>1980</option></select>
+      </div>
+    </div>
+    <button class="btn-primary" style="margin-top:8px" onclick="next(3)">Continue</button>
+  </div>
+
+  <div class="reg-screen" id="reg-step-3" style="display:none">
+    <div class="reg-h" style="font-size:24px">Tell us who you are</div>
+    <div class="rfield">
+      <label class="rlabel">Your name</label>
+      <input class="rinput" placeholder="Dale Smith"/>
+    </div>
+    <div class="rfield">
+      <label class="rlabel">Email address</label>
+      <input class="rinput" placeholder="name@email.com" type="email"/>
+    </div>
+    <div class="rfield">
+      <label class="rlabel">City and country</label>
+      <input class="rinput" placeholder="Waco, Texas"/>
+    </div>
+    <div class="rhelper">We never share your information. We use your email for magic links — no passwords needed.</div>
+    <button class="btn-primary" style="margin-top:8px" onclick="next(4)">Continue</button>
+  </div>
+
+  <div class="reg-screen" id="reg-step-4" style="display:none">
+    <div class="reg-h" style="font-size:24px">Before we begin</div>
+    <div style="margin:20px 0">
+      <div class="rcheck"><input type="checkbox" checked id="r1"/><label for="r1">I agree to the <a href="#" onclick="event.preventDefault()">Terms of Service</a>.</label></div>
+      <div class="rcheck"><input type="checkbox" checked id="r2"/><label for="r2">I agree to the <a href="#" onclick="event.preventDefault()">Privacy Policy</a>.</label></div>
+      <div class="rcheck"><input type="checkbox" id="r3"/><label for="r3">Send me ministry updates from Jesus Said Go <span style="color:var(--color-slate-light);font-size:12px">(optional)</span></label></div>
+    </div>
+    <button class="btn-primary" onclick="next(5)">Create my account</button>
+  </div>
+
+  <div class="reg-screen" id="reg-step-5" style="display:none">
+    <div class="reg-h" style="font-size:22px">Your group</div>
+    <div style="margin-bottom:18px;color:var(--color-slate-light);font-size:13px;text-align:center">These details can be changed later.</div>
+    <div class="rfield">
+      <label class="rlabel">Group name <span style="color:var(--color-slate-light);font-weight:400">(optional)</span></label>
+      <input class="rinput" placeholder="Defaults to Dale's group"/>
+    </div>
+    <div class="rfield">
+      <label class="rlabel">Meeting day</label>
+      <select class="rinput"><option>Tuesday</option><option>Wednesday</option><option>Thursday</option></select>
+    </div>
+    <div class="rfield">
+      <label class="rlabel">Meeting time</label>
+      <input class="rinput" type="time" value="19:00"/>
+    </div>
+    <div class="rfield">
+      <label class="rlabel">Where</label>
+      <div class="radio-group">
+        <div class="radio-row selected" onclick="selectRadio(this)">
+          <input type="radio" name="loc" checked/><label>In person</label>
+        </div>
+        <div class="radio-row" onclick="selectRadio(this)">
+          <input type="radio" name="loc"/><label>Online</label>
+        </div>
+      </div>
+    </div>
+    <div class="rfield">
+      <label class="rlabel">Language</label>
+      <select class="rinput"><option>English</option><option>Español</option></select>
+    </div>
+    <button class="btn-primary" style="margin-top:8px" onclick="next(6)">Set up the group</button>
+  </div>
+
+  <div class="reg-screen" id="reg-step-6" style="display:none">
+    <div class="reg-mountain">
+      <svg class="welcome-svg" viewBox="0 0 140 90" aria-hidden="true">
+        <path d="M 14 78 L 56 18 L 72 36 L 88 14 L 126 78" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linejoin="round" opacity="0.7"/>
+        <line x1="10" y1="78" x2="130" y2="78" stroke="#8B7355" stroke-width="0.7" stroke-dasharray="1.5 3" opacity="0.5"/>
+        <path d="M 70 76 Q 64 60 68 44 Q 72 28 86 14" stroke="#2C3E2D" stroke-width="0.7" stroke-dasharray="1.5 2.5" fill="none" opacity="0.5"/>
+        <circle cx="70" cy="76" r="3.5" fill="#2C3E2D"/>
+      </svg>
+    </div>
+    <div class="reg-h" style="font-style:italic;font-size:24px">You are standing at the base of the mountain.</div>
+    <div class="reg-body">Your group exists. The next step is to invite two to four people you have already been praying for.</div>
+    <div class="reg-quote" style="margin-top:18px;margin-bottom:24px">There is no rush. Settle in. Pray. When you are ready, take the next step.</div>
+    <a href="2-leader-dashboard.html" style="text-decoration:none"><button class="btn-primary">Invite my first disciples</button></a>
+    <a class="btn-tertiary" href="2-leader-dashboard.html">Not yet — show me my dashboard</a>
+  </div>
+</div>
+
+<p class="note">Tap any step above to jump there. The buttons inside each screen also advance through the flow.</p>
+
+</div>
+<script>
+function showReg(n, btn) {
+  for(let i=1;i<=6;i++) document.getElementById('reg-step-'+i).style.display = i===n?'block':'none';
+  document.querySelectorAll('#step-toggle button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function next(n) {
+  showReg(n, document.querySelectorAll('#step-toggle button')[n-1]);
+}
+function selectRadio(row) {
+  row.parentElement.querySelectorAll('.radio-row').forEach(r=>r.classList.remove('selected'));
+  row.classList.add('selected');
+  row.querySelector('input').checked = true;
+}
+</script>
+</body>
+</html>

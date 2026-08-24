@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — The Whole Mountain</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+.admin-header{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;background:white;border-bottom:0.5px solid var(--color-stone-light)}
+.admin-title{font-family:var(--font-voice);font-size:18px;color:var(--color-slate-dark)}
+.admin-sub{font-size:11px;color:var(--color-slate-light)}
+.admin-avatar{width:32px;height:32px;border-radius:50%;background:var(--color-mountain-green);color:var(--color-ivory);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500}
+.layout-row{display:flex;gap:6px;padding:10px 16px;background:var(--color-dawn-cream);overflow-x:auto}
+.layout-chip{font-size:11px;padding:5px 12px;border-radius:14px;border:0.5px solid var(--color-stone-light);background:white;color:var(--color-slate-mid);cursor:pointer;white-space:nowrap;font-family:inherit}
+.layout-chip.active{background:var(--color-mountain-green);color:var(--color-ivory);border-color:var(--color-mountain-green)}
+.queue-card{margin:0 16px 12px;background:white;border-radius:12px;padding:14px 16px;border:0.5px solid var(--color-stone-light);border-left:3px solid var(--color-sienna)}
+.queue-title{font-size:13px;color:var(--color-slate-dark);font-weight:500;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.queue-count{background:var(--color-sienna);color:white;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500}
+.queue-item{display:flex;align-items:flex-start;gap:8px;padding:10px 0;border-top:0.5px solid var(--color-stone-pale);font-size:13px}
+.queue-item:first-of-type{border-top:none;padding-top:0}
+.queue-badge{font-size:10px;padding:2px 6px;border-radius:4px;background:var(--color-dawn-cream);color:var(--color-trail-brown);flex-shrink:0;margin-top:1px}
+.queue-text{flex:1;color:var(--color-slate-mid);line-height:1.4}
+.queue-action{color:var(--color-distant-blue);font-size:12px;text-decoration:none;flex-shrink:0;align-self:center}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 16px 12px}
+.stat-box{background:white;border-radius:12px;padding:14px;border:0.5px solid var(--color-stone-light)}
+.stat-label2{font-size:10px;color:var(--color-trail-brown);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.stat-num{font-family:var(--font-voice);font-size:30px;color:var(--color-slate-dark);line-height:1}
+.stat-delta{font-size:11px;color:var(--color-living-green);margin-top:3px}
+.map-card{margin:0 16px 12px;background:white;border-radius:12px;padding:14px;border:0.5px solid var(--color-stone-light)}
+.map-title{font-size:13px;color:var(--color-slate-dark);font-weight:500;margin-bottom:8px;display:flex;justify-content:space-between;align-items:baseline}
+.map-sub{font-size:11px;color:var(--color-slate-light);font-weight:400}
+.map-svg{width:100%;height:140px;background:var(--color-dawn-cream);border-radius:6px}
+.events-card{margin:0 16px 12px;background:white;border-radius:12px;padding:14px 16px;border:0.5px solid var(--color-stone-light)}
+.events-title{font-size:13px;color:var(--color-slate-dark);font-weight:500;margin-bottom:10px}
+.event-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-top:0.5px solid var(--color-stone-pale);font-size:13px}
+.event-row:first-of-type{border-top:none;padding-top:0}
+.event-icon{width:24px;height:24px;border-radius:50%;background:var(--color-dawn-cream);display:flex;align-items:center;justify-content:center;color:var(--color-mountain-green);font-size:13px;flex-shrink:0}
+.event-text{flex:1;color:var(--color-slate-dark);line-height:1.4}
+.event-time{font-size:11px;color:var(--color-slate-light);margin-top:2px}
+.health-card{margin:0 16px 14px;background:white;border-radius:12px;padding:14px 16px;border:0.5px solid var(--color-stone-light)}
+.health-title{font-size:13px;color:var(--color-slate-dark);font-weight:500;margin-bottom:10px}
+.health-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:12px}
+.health-label{color:var(--color-slate-mid)}
+.health-value{display:flex;align-items:center;gap:5px;color:var(--color-slate-dark);font-weight:500}
+.health-check{color:var(--color-living-green);font-size:14px}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="nav-bar">
+  <a href="index.html">← All mockups</a>
+  <span class="nav-title">Mockup 6: Admin dashboard</span>
+</div>
+
+<div class="phone">
+  <div class="admin-header">
+    <div>
+      <div class="admin-title">Network overview</div>
+      <div class="admin-sub">247 leaders · 89 groups · 18 countries</div>
+    </div>
+    <div class="admin-avatar">DS</div>
+  </div>
+
+  <div class="layout-row">
+    <div class="layout-chip active">Hybrid</div>
+    <div class="layout-chip">Operations</div>
+    <div class="layout-chip">Vision</div>
+    <div class="layout-chip" style="margin-left:auto"><i class="ti ti-plus" style="vertical-align:-2px"></i> Custom</div>
+  </div>
+
+  <div class="queue-card">
+    <div class="queue-title">Needs your attention <span class="queue-count">3</span></div>
+    <div class="queue-item">
+      <span class="queue-badge">Abuse report</span>
+      <span class="queue-text">Leader reported for inappropriate message</span>
+      <a class="queue-action" href="#" onclick="event.preventDefault()">Review</a>
+    </div>
+    <div class="queue-item">
+      <span class="queue-badge">Parent change</span>
+      <span class="queue-text">Two leaders requesting tree adjustment</span>
+      <a class="queue-action" href="#" onclick="event.preventDefault()">Review</a>
+    </div>
+    <div class="queue-item">
+      <span class="queue-badge">Succession</span>
+      <span class="queue-text">Group needs new leader (Bamako, Mali)</span>
+      <a class="queue-action" href="#" onclick="event.preventDefault()">Review</a>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-label2">Disciple-makers</div>
+      <div class="stat-num">247</div>
+      <div class="stat-delta">+23% YoY</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label2">Active groups</div>
+      <div class="stat-num">89</div>
+      <div class="stat-delta">+18 this quarter</div>
+    </div>
+  </div>
+
+  <div class="map-card">
+    <div class="map-title">Where we are <span class="map-sub">18 countries</span></div>
+    <svg class="map-svg" viewBox="0 0 340 140" preserveAspectRatio="xMidYMid meet">
+      <path d="M 30 50 Q 40 35 70 38 L 95 45 Q 110 50 115 65 L 110 80 Q 95 90 70 88 L 45 80 Q 30 70 30 50 Z" fill="#E8E5DE" stroke="#C8C5BE" stroke-width="0.5"/>
+      <path d="M 130 30 Q 160 25 195 32 L 220 40 Q 245 45 260 60 L 255 80 Q 245 95 220 95 L 180 92 Q 150 88 135 75 L 128 55 Q 125 40 130 30 Z" fill="#E8E5DE" stroke="#C8C5BE" stroke-width="0.5"/>
+      <path d="M 145 100 Q 158 98 168 105 L 175 115 Q 172 125 160 128 L 148 122 Q 142 115 145 100 Z" fill="#E8E5DE" stroke="#C8C5BE" stroke-width="0.5"/>
+      <path d="M 270 50 Q 295 48 310 60 L 315 80 Q 308 92 290 90 L 275 78 Q 268 65 270 50 Z" fill="#E8E5DE" stroke="#C8C5BE" stroke-width="0.5"/>
+      <circle cx="65" cy="62" r="8" fill="#2C3E2D" opacity="0.75"/>
+      <circle cx="155" cy="55" r="5" fill="#2C3E2D" opacity="0.7"/>
+      <circle cx="158" cy="115" r="4" fill="#2C3E2D" opacity="0.7"/>
+      <circle cx="195" cy="65" r="6" fill="#2C3E2D" opacity="0.75"/>
+      <circle cx="220" cy="75" r="3" fill="#2C3E2D" opacity="0.65"/>
+      <circle cx="285" cy="70" r="4" fill="#2C3E2D" opacity="0.7"/>
+      <text x="65" y="86" text-anchor="middle" font-size="8" fill="#4A4F4B" font-family="Inter, sans-serif">Texas · 47</text>
+      <text x="195" y="55" text-anchor="middle" font-size="8" fill="#4A4F4B" font-family="Inter, sans-serif" dy="-12">W. Africa · 31</text>
+    </svg>
+  </div>
+
+  <div class="events-card">
+    <div class="events-title">Recent events</div>
+    <div class="event-row">
+      <div class="event-icon"><i class="ti ti-star" aria-hidden="true"></i></div>
+      <div>
+        <div class="event-text">A new generation began in Bamako, Mali</div>
+        <div class="event-time">3 days ago</div>
+      </div>
+    </div>
+    <div class="event-row">
+      <div class="event-icon"><i class="ti ti-award" aria-hidden="true"></i></div>
+      <div>
+        <div class="event-text">Sarah J. graduated her first group in Houston, TX</div>
+        <div class="event-time">5 days ago</div>
+      </div>
+    </div>
+    <div class="event-row">
+      <div class="event-icon"><i class="ti ti-flag" aria-hidden="true"></i></div>
+      <div>
+        <div class="event-text">Brazzaville group reached Lesson 24 (multiplication)</div>
+        <div class="event-time">1 week ago</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="health-card">
+    <div class="health-title">System health</div>
+    <div class="health-row">
+      <span class="health-label">Email delivery</span>
+      <span class="health-value">99.4% <i class="ti ti-check health-check" aria-hidden="true"></i></span>
+    </div>
+    <div class="health-row">
+      <span class="health-label">Avg load time</span>
+      <span class="health-value">1.2s <i class="ti ti-check health-check" aria-hidden="true"></i></span>
+    </div>
+    <div class="health-row">
+      <span class="health-label">Error rate (7d)</span>
+      <span class="health-value">0.03% <i class="ti ti-check health-check" aria-hidden="true"></i></span>
+    </div>
+  </div>
+</div>
+
+<p class="note">Three preset layouts: Hybrid (current), Operations, and Vision. The world map shows where groups are; the operational queue surfaces what needs Dale's attention; the recent events show what is happening on the ground.</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,423 @@
+/* ============================================================================
+ * The Returning Climber — Animation Styles
+ * ============================================================================
+ *
+ * CSS-driven motion choreography for the central loading animation of
+ * The Whole Mountain. See ReturningClimber.jsx for usage and theology.
+ *
+ * Animation timing (9-second cycle, with phases):
+ *
+ *   0.0s — 1.6s   Phase 1: Solitary climb
+ *                 Figure A climbs from base to mid-point.
+ *
+ *   1.6s — 2.0s   Phase 2a: Pause at altitude
+ *                 Figure A rests at mid-point. The pause is the moment
+ *                 of awareness — the climber sees a new arrival below.
+ *
+ *   2.0s — 2.7s   Phase 2b: Descent
+ *                 Figure A descends to a meeting point lower on the slope.
+ *                 New figure B has appeared at the base.
+ *
+ *   2.7s — 4.5s   Phase 3: Companioned ascent
+ *                 Figures A and B climb together to a higher point than
+ *                 figure A reached alone.
+ *
+ *   4.5s — 6.8s   Phase 4: Range revealed
+ *                 The viewport's far mountains fade in. New pairs of
+ *                 climbers (C, D) appear on adjacent peaks.
+ *
+ *   6.8s — 7.9s   Phase 5: Multiplication
+ *                 Three distant mountain pairs (pair-1, pair-2, pair-3)
+ *                 appear in the foreground and far distance, completing
+ *                 the visual of multiplied companionship.
+ *
+ *   7.9s — 9.0s   Phase 6: Quiet hold
+ *                 All elements rest at full opacity briefly, then fade
+ *                 gracefully as the cycle prepares to reset.
+ *
+ * Color tokens reference the brand's design system. If you are
+ * integrating this into a system without those tokens defined, the
+ * fallback values are:
+ *
+ *   --color-mountain-green: #2C3E2D
+ *   --color-trail-brown:    #8B7355
+ *   --color-text-primary:   #1A1F1B
+ *   --color-text-secondary: #4A4F4B
+ *   --color-bg:             #F5F2EC
+ * ============================================================================ */
+
+.returning-climber {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2rem 0;
+  background: var(--color-bg, #F5F2EC);
+}
+
+/* Mode-specific sizing */
+.returning-climber--launch .returning-climber__canvas,
+.returning-climber--graduation .returning-climber__canvas {
+  width: 340px;
+  max-width: 90vw;
+  aspect-ratio: 340 / 300;
+}
+
+.returning-climber--loading .returning-climber__canvas {
+  width: 120px;
+  aspect-ratio: 340 / 300;
+}
+
+.returning-climber--empty .returning-climber__canvas {
+  width: 240px;
+  max-width: 80vw;
+  aspect-ratio: 340 / 300;
+}
+
+.returning-climber__canvas {
+  position: relative;
+}
+
+.returning-climber__canvas svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.returning-climber__subtitle {
+  font-family: 'Cormorant Garamond', Cambria, Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #4A4F4B);
+  text-align: center;
+  max-width: 320px;
+  min-height: 24px;
+  letter-spacing: 0.02em;
+  margin: 0;
+  transition: opacity 0.7s ease;
+}
+
+/* ----------------------------------------------------------------------------
+ * Static SVG elements — always visible
+ * ---------------------------------------------------------------------------- */
+
+.rc-mountain {
+  fill: none;
+  stroke: var(--color-text-secondary, #4A4F4B);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.55;
+}
+
+.rc-baseline {
+  stroke-dasharray: 2 4;
+}
+
+.rc-mountain-far {
+  fill: none;
+  stroke: var(--color-text-secondary, #4A4F4B);
+  stroke-width: 0.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.25;
+}
+
+.rc-path {
+  fill: none;
+  stroke: var(--color-mountain-green, #2C3E2D);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-dasharray: 2 3;
+  opacity: 0.4;
+}
+
+.rc-figure {
+  fill: var(--color-mountain-green, #2C3E2D);
+}
+
+.rc-summit {
+  fill: var(--color-mountain-green, #2C3E2D);
+  opacity: 0.5;
+}
+
+/* ----------------------------------------------------------------------------
+ * Animated elements — apply only when animation is active
+ * ---------------------------------------------------------------------------- */
+
+.rc-summit--pulsing {
+  animation: rc-summit-pulse 9s ease-in-out infinite;
+}
+
+.rc-far-mountains {
+  opacity: 0;
+  animation: rc-far-fade-in 9s ease-in-out infinite;
+}
+
+.rc-figure-a {
+  animation: rc-figure-a-journey 9s ease-in-out infinite;
+}
+
+.rc-figure-b {
+  opacity: 0;
+  animation: rc-figure-b-journey 9s ease-in-out infinite;
+}
+
+.rc-figure-c {
+  opacity: 0;
+  animation: rc-figure-c-appear 9s ease-in-out infinite;
+}
+
+.rc-figure-d {
+  opacity: 0;
+  animation: rc-figure-d-appear 9s ease-in-out infinite;
+}
+
+.rc-pair-1 {
+  opacity: 0;
+  animation: rc-pair-1 9s ease-in-out infinite;
+}
+
+.rc-pair-2 {
+  opacity: 0;
+  animation: rc-pair-2 9s ease-in-out infinite;
+}
+
+.rc-pair-3 {
+  opacity: 0;
+  animation: rc-pair-3 9s ease-in-out infinite;
+}
+
+/* ----------------------------------------------------------------------------
+ * Keyframes — the choreography of descent and ascent
+ * ---------------------------------------------------------------------------- */
+
+/* Figure A: climbs partway, pauses, descends to meeting point,
+ * then ascends together with figure B to a higher altitude.
+ * This is the central animation — the figure embodying the gospel
+ * pattern of descent before companioned ascent. */
+@keyframes rc-figure-a-journey {
+  0%   { transform: translate(0, 0); }
+  18%  { transform: translate(38px, -50px); }
+  22%  { transform: translate(38px, -50px); }
+  35%  { transform: translate(10px, -12px); }
+  50%  { transform: translate(45px, -58px); }
+  88%  { transform: translate(45px, -58px); }
+  95%  { transform: translate(45px, -58px); opacity: 0.5; }
+  100% { transform: translate(45px, -58px); opacity: 0.5; }
+}
+
+/* Figure B: appears at base around 30%, then climbs in companionship
+ * with figure A to the higher altitude. */
+@keyframes rc-figure-b-journey {
+  0%,  30% { opacity: 0; transform: translate(0, 0); }
+  33%      { opacity: 1; transform: translate(0, 0); }
+  50%      { opacity: 1; transform: translate(40px, -55px); }
+  88%      { opacity: 1; transform: translate(40px, -55px); }
+  95%, 100% { opacity: 0.5; transform: translate(40px, -55px); }
+}
+
+/* Figure C: appears mid-cycle on the left adjacent mountain */
+@keyframes rc-figure-c-appear {
+  0%,  55%  { opacity: 0; }
+  60%, 88%  { opacity: 1; }
+  95%, 100% { opacity: 0.5; }
+}
+
+/* Figure D: appears mid-cycle on the right adjacent mountain */
+@keyframes rc-figure-d-appear {
+  0%,  65%  { opacity: 0; }
+  70%, 88%  { opacity: 1; }
+  95%, 100% { opacity: 0.5; }
+}
+
+/* Far mountains: fade in as the camera widens to reveal the range */
+@keyframes rc-far-fade-in {
+  0%,  42%  { opacity: 0; }
+  55%, 88%  { opacity: 1; }
+  95%, 100% { opacity: 0; }
+}
+
+/* Pair 1, 2, 3: distant pairs appearing late in the cycle to complete
+ * the visual of multiplied companionship across the whole range */
+@keyframes rc-pair-1 {
+  0%,  58%  { opacity: 0; }
+  62%, 88%  { opacity: 0.85; }
+  95%, 100% { opacity: 0; }
+}
+
+@keyframes rc-pair-2 {
+  0%,  68%  { opacity: 0; }
+  72%, 88%  { opacity: 0.85; }
+  95%, 100% { opacity: 0; }
+}
+
+@keyframes rc-pair-3 {
+  0%,  76%  { opacity: 0; }
+  80%, 88%  { opacity: 0.85; }
+  95%, 100% { opacity: 0; }
+}
+
+/* Summit pulse: a gentle breathing rhythm throughout the cycle.
+ * Christ is the height of every climb — visible from every position. */
+@keyframes rc-summit-pulse {
+  0%,  8%   { opacity: 0.3; }
+  15%, 88%  { opacity: 0.7; }
+  95%, 100% { opacity: 0.3; }
+}
+
+/* ----------------------------------------------------------------------------
+ * Launch mode: animation plays once, then settles
+ * ---------------------------------------------------------------------------- */
+
+.returning-climber--launch .rc-summit--pulsing,
+.returning-climber--launch .rc-far-mountains,
+.returning-climber--launch .rc-figure-a,
+.returning-climber--launch .rc-figure-b,
+.returning-climber--launch .rc-figure-c,
+.returning-climber--launch .rc-figure-d,
+.returning-climber--launch .rc-pair-1,
+.returning-climber--launch .rc-pair-2,
+.returning-climber--launch .rc-pair-3 {
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+/* ----------------------------------------------------------------------------
+ * Loading mode: compact version with just summit pulse and a small climber
+ * ---------------------------------------------------------------------------- */
+
+.returning-climber--loading .rc-figure-c,
+.returning-climber--loading .rc-figure-d,
+.returning-climber--loading .rc-pair-1,
+.returning-climber--loading .rc-pair-2,
+.returning-climber--loading .rc-pair-3,
+.returning-climber--loading .rc-far-mountains {
+  display: none;
+}
+
+.returning-climber--loading .rc-figure-a,
+.returning-climber--loading .rc-figure-b {
+  animation-duration: 4s;
+}
+
+.returning-climber--loading .rc-summit--pulsing {
+  animation: rc-loading-pulse 2s ease-in-out infinite;
+}
+
+@keyframes rc-loading-pulse {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 0.8; }
+}
+
+/* ----------------------------------------------------------------------------
+ * Graduation mode: same as launch but plays through with a subtle slowdown
+ * The contemplative pace honors the significance of the moment.
+ * ---------------------------------------------------------------------------- */
+
+.returning-climber--graduation .rc-summit--pulsing,
+.returning-climber--graduation .rc-far-mountains,
+.returning-climber--graduation .rc-figure-a,
+.returning-climber--graduation .rc-figure-b,
+.returning-climber--graduation .rc-figure-c,
+.returning-climber--graduation .rc-figure-d,
+.returning-climber--graduation .rc-pair-1,
+.returning-climber--graduation .rc-pair-2,
+.returning-climber--graduation .rc-pair-3 {
+  animation-duration: 12s;
+  animation-timing-function: ease-in-out;
+}
+
+/* ----------------------------------------------------------------------------
+ * Empty mode: no animation. Static frame of the climber at the base
+ * of the central mountain. Used for empty-state screens.
+ * ---------------------------------------------------------------------------- */
+
+.returning-climber--empty .rc-figure-a,
+.returning-climber--empty .rc-figure-b,
+.returning-climber--empty .rc-figure-c,
+.returning-climber--empty .rc-figure-d,
+.returning-climber--empty .rc-pair-1,
+.returning-climber--empty .rc-pair-2,
+.returning-climber--empty .rc-pair-3,
+.returning-climber--empty .rc-far-mountains,
+.returning-climber--empty .rc-summit--pulsing {
+  animation: none;
+}
+
+.returning-climber--empty .rc-summit {
+  opacity: 0.5;
+}
+
+/* ----------------------------------------------------------------------------
+ * Dark mode adjustments
+ * ---------------------------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  .returning-climber {
+    background: var(--color-bg-dark, #1A201B);
+  }
+
+  .rc-mountain,
+  .rc-mountain-far {
+    stroke: var(--color-text-secondary-dark, #B8B5AE);
+  }
+
+  .rc-path,
+  .rc-figure,
+  .rc-summit {
+    fill: var(--color-mountain-green-dark, #7A9560);
+    stroke: var(--color-mountain-green-dark, #7A9560);
+  }
+
+  .returning-climber__subtitle {
+    color: var(--color-text-secondary-dark, #B8B5AE);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * Reduced motion: honor user preference
+ *
+ * When a user has prefers-reduced-motion enabled, we replace the
+ * animated story with a static frame showing two figures partway up
+ * the central mountain — a quiet, restful depiction of companionship
+ * already in progress. The story is implied rather than enacted.
+ * ---------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .rc-summit--pulsing,
+  .rc-far-mountains,
+  .rc-figure-a,
+  .rc-figure-b,
+  .rc-figure-c,
+  .rc-figure-d,
+  .rc-pair-1,
+  .rc-pair-2,
+  .rc-pair-3 {
+    animation: none;
+  }
+
+  .rc-far-mountains,
+  .rc-figure-c,
+  .rc-figure-d,
+  .rc-pair-1,
+  .rc-pair-2,
+  .rc-pair-3 {
+    opacity: 0.7;
+  }
+
+  /* Static composition: figure A is partway up, figure B is just below */
+  .rc-figure-a {
+    transform: translate(38px, -50px);
+  }
+
+  .rc-figure-b {
+    opacity: 1;
+    transform: translate(28px, -35px);
+  }
+
+  .rc-summit {
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader Dashboard — The Whole Mountain</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+.phone-header{padding:16px 20px 8px;display:flex;justify-content:space-between;align-items:center;background:var(--color-dawn-cream)}
+.phone-title{font-family:var(--font-voice);font-size:18px;color:var(--color-mountain-green);letter-spacing:.01em}
+.greeting{padding:0 20px 16px;color:var(--color-slate-mid);font-size:14px}
+.greeting-name{color:var(--color-slate-dark)}
+.zone1{margin:0 16px 16px;background:white;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;border-left:3px solid var(--color-mountain-green)}
+.zone1-icon{color:var(--color-mountain-green);font-size:22px;flex-shrink:0}
+.zone1-text{flex:1}
+.zone1-eyebrow{font-size:11px;color:var(--color-trail-brown);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.zone1-body{font-size:14px;color:var(--color-slate-dark);line-height:1.4}
+.zone1-arrow{color:var(--color-distant-blue);font-size:18px}
+.zone2{margin:0 16px 20px;background:white;border-radius:12px;padding:20px 18px;border:0.5px solid var(--color-stone-light)}
+.zone2-name{font-family:var(--font-voice);font-size:20px;color:var(--color-slate-dark);margin-bottom:14px}
+.members{display:flex;gap:8px;margin-bottom:20px}
+.member{width:36px;height:36px;border-radius:50%;background:var(--color-stone-pale);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--color-mountain-green);border:1.5px solid white;box-shadow:0 0 0 0.5px var(--color-stone-light)}
+.lesson-eyebrow{font-size:11px;color:var(--color-trail-brown);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.lesson-title{font-family:var(--font-voice);font-size:24px;color:var(--color-slate-dark);line-height:1.2;margin-bottom:4px}
+.lesson-scripture{font-size:14px;color:var(--color-slate-mid);margin-bottom:18px}
+.last-meeting{text-align:center;font-size:12px;color:var(--color-slate-light);margin-top:10px}
+.zone3{margin:0 16px 16px;padding:16px;background:var(--color-dawn-cream);border-radius:12px;border:0.5px dashed var(--color-stone-light)}
+.zone3-inner{display:flex;align-items:center;gap:14px}
+.zone3-svg{width:48px;height:36px;flex-shrink:0}
+.zone3-text{flex:1}
+.zone3-label{font-size:13px;color:var(--color-slate-mid);line-height:1.4}
+.zone3-label strong{color:var(--color-slate-dark)}
+.zone3-link{font-size:13px;color:var(--color-distant-blue);text-decoration:none;white-space:nowrap}
+.zone3-italic{font-family:var(--font-voice);font-style:italic;font-size:13px;color:var(--color-slate-mid);text-align:center;margin-top:10px;line-height:1.5}
+.tabbar{display:grid;grid-template-columns:repeat(4,1fr);background:white;border-top:0.5px solid var(--color-stone-light);padding:8px 0 12px}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--color-slate-light);font-size:11px;text-decoration:none}
+.tab.active{color:var(--color-mountain-green)}
+.tab i{font-size:22px}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="nav-bar">
+  <a href="index.html">← All mockups</a>
+  <span class="nav-title">Mockup 2: Leader dashboard</span>
+</div>
+
+<div class="toggle-row" id="day-toggle">
+  <button class="active" onclick="toggleDay('tuesday', this)">Tuesday (meeting day)</button>
+  <button onclick="toggleDay('wednesday', this)">Wednesday (day after)</button>
+</div>
+
+<div class="phone">
+  <div class="phone-header">
+    <div class="phone-title">The Whole Mountain</div>
+    <i class="ti ti-bell" style="color:var(--color-slate-mid);font-size:20px" aria-label="Notifications"></i>
+  </div>
+  <div class="greeting">Good morning, <span class="greeting-name">John</span></div>
+
+  <div class="zone1" id="z1">
+    <i class="ti ti-clock zone1-icon" aria-hidden="true"></i>
+    <div class="zone1-text">
+      <div class="zone1-eyebrow">Tonight at 7pm</div>
+      <div class="zone1-body">Your group meets in 11 hours.</div>
+    </div>
+    <i class="ti ti-chevron-right zone1-arrow" aria-hidden="true"></i>
+  </div>
+
+  <div class="zone2">
+    <div class="zone2-name">John's group</div>
+    <div class="members">
+      <div class="member">SJ</div>
+      <div class="member">MK</div>
+      <div class="member">JD</div>
+    </div>
+    <div class="lesson-eyebrow">Lesson 12 of 37</div>
+    <div class="lesson-title">Salt and light</div>
+    <div class="lesson-scripture">Matthew 5:13–16</div>
+    <button class="btn-primary">Mark today's meeting complete</button>
+    <div class="last-meeting">Last meeting: 7 days ago</div>
+  </div>
+
+  <div class="zone3">
+    <div class="zone3-inner">
+      <svg class="zone3-svg" viewBox="0 0 48 36" aria-hidden="true">
+        <path d="M 4 30 L 18 12 L 24 18 L 30 8 L 44 30" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linejoin="round" opacity="0.55"/>
+        <circle cx="24" cy="28" r="2" fill="#2C3E2D"/>
+      </svg>
+      <div class="zone3-text">
+        <div class="zone3-label">Your spiritual family: <strong>0 disciples</strong></div>
+      </div>
+      <a href="3-family-tree.html" class="zone3-link">View tree →</a>
+    </div>
+    <div class="zone3-italic">When your group graduates, this is where the tree begins.</div>
+  </div>
+
+  <div class="tabbar">
+    <a href="#" class="tab active" onclick="event.preventDefault()"><i class="ti ti-home" aria-hidden="true"></i><span>Home</span></a>
+    <a href="3-family-tree.html" class="tab"><i class="ti ti-affiliate" aria-hidden="true"></i><span>Tree</span></a>
+    <a href="#" class="tab" onclick="event.preventDefault()"><i class="ti ti-book" aria-hidden="true"></i><span>Lessons</span></a>
+    <a href="#" class="tab" onclick="event.preventDefault()"><i class="ti ti-user" aria-hidden="true"></i><span>Profile</span></a>
+  </div>
+</div>
+
+<p class="note">Toggle between meeting day and day after to see how the action banner appears and disappears. Tap the tree glimpse to navigate to the family tree.</p>
+
+</div>
+<script>
+function toggleDay(day, btn) {
+  document.getElementById('z1').style.display = day === 'tuesday' ? 'flex' : 'none';
+  document.querySelectorAll('#day-toggle button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Whole Mountain — Interactive Mockups</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="shared.css">
+<style>
+.index-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.index-hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.index-mountain {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.index-mountain svg {
+  width: 120px;
+  height: 80px;
+}
+
+.index-title {
+  font-family: var(--font-voice);
+  font-size: 38px;
+  color: var(--color-mountain-green);
+  margin: 0 0 8px;
+  font-weight: 400;
+}
+
+.index-subtitle {
+  font-family: var(--font-voice);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--color-trail-brown);
+  margin: 0 0 16px;
+}
+
+.index-description {
+  font-size: 15px;
+  color: var(--color-slate-mid);
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.index-quote {
+  font-family: var(--font-voice);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--color-slate-mid);
+  text-align: center;
+  margin: 32px auto 48px;
+  max-width: 520px;
+  line-height: 1.6;
+  padding: 20px 24px;
+  border-top: 0.5px solid var(--color-stone-light);
+  border-bottom: 0.5px solid var(--color-stone-light);
+}
+
+.mockup-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .mockup-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mockup-card {
+  background: white;
+  border-radius: 12px;
+  border: 0.5px solid var(--color-stone-light);
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, transform 0.2s;
+  display: block;
+}
+
+.mockup-card:hover {
+  border-color: var(--color-mountain-green);
+  transform: translateY(-2px);
+}
+
+.mockup-num {
+  font-size: 11px;
+  color: var(--color-trail-brown);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.mockup-name {
+  font-family: var(--font-voice);
+  font-size: 22px;
+  color: var(--color-slate-dark);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.mockup-desc {
+  font-size: 13px;
+  color: var(--color-slate-mid);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.mockup-arrow {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--color-distant-blue);
+  font-size: 13px;
+}
+
+.index-footer {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 0.5px solid var(--color-stone-light);
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-slate-light);
+  line-height: 1.6;
+}
+
+.index-footer strong {
+  color: var(--color-slate-mid);
+  font-weight: 500;
+}
+</style>
+</head>
+<body>
+<div class="index-wrap">
+
+  <div class="index-hero">
+    <div class="index-mountain">
+      <svg viewBox="0 0 120 80" aria-hidden="true">
+        <path d="M 12 68 L 50 18 L 64 34 L 80 12 L 108 68" stroke="#8B7355" stroke-width="1.2" fill="none" stroke-linejoin="round" opacity="0.7"/>
+        <line x1="8" y1="68" x2="112" y2="68" stroke="#8B7355" stroke-width="0.8" stroke-dasharray="1.5 3" opacity="0.5"/>
+        <path d="M 60 66 Q 56 50 60 36 Q 62 24 64 14" stroke="#2C3E2D" stroke-width="0.8" stroke-dasharray="1.5 2.5" fill="none" opacity="0.5"/>
+        <circle cx="60" cy="66" r="3" fill="#2C3E2D"/>
+        <circle cx="63" cy="66" r="3" fill="#2C3E2D"/>
+      </svg>
+    </div>
+    <h1 class="index-title">The Whole Mountain</h1>
+    <p class="index-subtitle">a discipleship platform by Jesus Said Go</p>
+    <p class="index-description">Interactive mockups for the six most consequential screens of the platform. Tap any card to open the prototype for that screen.</p>
+  </div>
+
+  <div class="index-quote">
+    The standard is one and fixed for every disciple;<br>
+    the next step is measured to each one.
+  </div>
+
+  <div class="mockup-grid">
+    <a href="1-leader-registration.html" class="mockup-card">
+      <div class="mockup-num">Mockup 1</div>
+      <h2 class="mockup-name">Leader registration</h2>
+      <p class="mockup-desc">The six-step entry point. Welcome, age, basic info, consent, group setup, and the final "base of the mountain" welcome.</p>
+      <span class="mockup-arrow">Open →</span>
+    </a>
+
+    <a href="2-leader-dashboard.html" class="mockup-card">
+      <div class="mockup-num">Mockup 2</div>
+      <h2 class="mockup-name">Leader dashboard</h2>
+      <p class="mockup-desc">Three-zone layout with action banner, current group focus, and tree glimpse. Toggle between meeting-day and day-after states.</p>
+      <span class="mockup-arrow">Open →</span>
+    </a>
+
+    <a href="3-family-tree.html" class="mockup-card">
+      <div class="mockup-num">Mockup 3</div>
+      <h2 class="mockup-name">Family tree</h2>
+      <p class="mockup-desc">The visual heart of the platform. Three states: empty (new leader), small (early multiplication), and rich (multiple generations).</p>
+      <span class="mockup-arrow">Open →</span>
+    </a>
+
+    <a href="4-invitation-acceptance.html" class="mockup-card">
+      <div class="mockup-num">Mockup 4</div>
+      <h2 class="mockup-name">Invitation acceptance</h2>
+      <p class="mockup-desc">The sacred moment of saying yes. Three steps from John's personal invitation through quick verification to "You are at the base of the mountain."</p>
+      <span class="mockup-arrow">Open →</span>
+    </a>
+
+    <a href="5-disciple-view.html" class="mockup-card">
+      <div class="mockup-num">Mockup 5</div>
+      <h2 class="mockup-name">Disciple view</h2>
+      <p class="mockup-desc">Sarah's minimal single-focus dashboard. This week's lesson, the memory verse, the next meeting, her discipler.</p>
+      <span class="mockup-arrow">Open →</span>
+    </a>
+
+    <a href="6-admin-dashboard.html" class="mockup-card">
+      <div class="mockup-num">Mockup 6</div>
+      <h2 class="mockup-name">Admin dashboard</h2>
+      <p class="mockup-desc">Dale's command center. Operational queue, aggregate stats, world map, recent events, system health. Three preset layouts.</p>
+      <span class="mockup-arrow">Open →</span>
+    </a>
+  </div>
+
+  <div class="index-footer">
+    <strong>How to use these mockups</strong><br>
+    Each file is self-contained. Open in any browser, on any device. Email them, share them with your circle, hand them to a developer. The interactions work — toggle between states, step through flows, tap buttons. They are reference visuals, not the production application.<br><br>
+    <em>Soli Deo gloria.</em>
+  </div>
+
+</div>
+</body>
+</html>
