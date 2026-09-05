@@ -22,7 +22,7 @@ Read these documents before working on the app, then follow the instructions for
 1. [Project status](docs/status.md): current progress and next steps.
 2. [Validation flow](docs/process/validation-flow.md): source roles, status meanings, and readiness rules.
 3. [Product roadmap](docs/product/roadmap.md): module order and validation expectations.
-4. [Documentation Analyst](agents/documentation-analyst.md) or [Prototype Designer](agents/prototype-designer.md): task-specific instructions.
+4. [Documentation Analyst](skills/documentation-analyst.md) or [Prototype Designer](skills/prototype-designer.md): task-specific instructions.
 
 [Incoming materials](docs/incoming/) contains received specifications, brand direction, mockups, prompts, handoff notes, and reference code.
 

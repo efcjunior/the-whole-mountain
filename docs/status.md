@@ -61,4 +61,4 @@ A new contributor or agent should read these files first:
 2. `docs/status.md`
 3. `docs/process/validation-flow.md`
 4. `docs/product/roadmap.md`
-5. Relevant agent instructions in `agents/`
+5. Relevant agent instructions in `skills/`
