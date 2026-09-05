@@ -10,7 +10,7 @@ Your work exists to help Dale and the project owner validate product behavior be
 
 Before doing prototype work, read:
 
-- `README.md`
+- `THE_WHOLE_MOUNTAIN_CONTEXT.md`
 - `docs/status.md`
 - `docs/process/validation-flow.md`
 - `docs/product/roadmap.md`

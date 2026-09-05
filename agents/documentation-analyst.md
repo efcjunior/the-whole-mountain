@@ -10,7 +10,7 @@ Your work turns received documents, mockups, prompts, handoff notes, and referen
 
 Before analyzing `docs/incoming/`, read:
 
-- `README.md`
+- `THE_WHOLE_MOUNTAIN_CONTEXT.md`
 - `docs/status.md`
 - `docs/process/validation-flow.md`
 - `docs/product/roadmap.md`

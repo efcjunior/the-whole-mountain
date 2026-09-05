@@ -1,6 +1,6 @@
 # Project Status
 
-Last updated: 2026-08-24
+Last updated: 2026-09-04
 
 This is the single source of truth for current project status.
 
@@ -27,7 +27,7 @@ The agreed interpretation is:
 | Product overview | Draft | Documentation Analyst | Create `docs/product/overview.md`. |
 | Software requirements | Draft | Documentation Analyst | Create `docs/requirements/software-requirements.md` with stable requirement IDs. |
 | Open questions | Draft | Documentation Analyst | Create `docs/requirements/open-questions.md`. |
-| Prototype repository | Not Started | Human / Prototype Designer | Create or initialize `the-whole-mountain-prototype`. |
+| Prototype repository | Draft | Human / Prototype Designer | Local Git repository initialized at `repos/the-whole-mountain-prototype/`; begin prototype work when a module is `Ready for Prototype`. |
 | Prototype validation | Blocked | Prototype Designer | Wait until at least one module is marked `Ready for Prototype`. |
 
 ## Module Validation Status
@@ -54,8 +54,8 @@ The agreed interpretation is:
 
 A new contributor or agent should read these files first:
 
-1. `README.md`
+1. `THE_WHOLE_MOUNTAIN_CONTEXT.md`
 2. `docs/status.md`
 3. `docs/process/validation-flow.md`
 4. `docs/product/roadmap.md`
-5. Relevant agent instructions in `docs/agents/`
+5. Relevant agent instructions in `agents/`
