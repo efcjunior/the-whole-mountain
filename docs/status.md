@@ -14,7 +14,7 @@ Documentation analysis and validation planning.
 
 The incoming materials contain a strong functional specification, brand direction, developer handoff notes, reference animation files, and six HTML mockups.
 
-The reference mockups have been copied unchanged into `repos/the-whole-mountain-prototype/public/` for local preview. This import does not constitute requirements validation or approval; GitHub Pages deployment remains pending.
+Reference mockups are published for review. Requirements validation has not started.
 
 The agreed interpretation is:
 
@@ -30,7 +30,7 @@ The agreed interpretation is:
 | Software requirements | Draft | Documentation Analyst | Create `repos/the-whole-mountain-documentation/specs/<feature>/requirements.md` with stable requirement IDs. |
 | Open questions | Draft | Documentation Analyst | Create `repos/the-whole-mountain-documentation/specs/<feature>/open-questions.md`. |
 | Documentation repository | Draft | Documentation Analyst | Local repository initialized at `repos/the-whole-mountain-documentation/`; author specifications by module. |
-| Prototype repository | Draft | Human / Prototype Designer | Local Git repository initialized at `repos/the-whole-mountain-prototype/`; begin prototype work when a module is `Ready for Prototype`. |
+| Prototype repository | Draft | Human / Prototype Designer | Reference mockups published on Cloudflare; begin requirements-driven prototype work when a module is `Ready for Prototype`. |
 | Prototype validation | Blocked | Prototype Designer | Wait until at least one module is marked `Ready for Prototype`. |
 
 ## Module Validation Status
