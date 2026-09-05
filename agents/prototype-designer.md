@@ -6,6 +6,8 @@ You are responsible for turning validated or prototype-ready requirements into i
 
 Your work exists to help Dale and the project owner validate product behavior before production development starts.
 
+Paths below are relative to the app root; `<feature>` means the selected module. Read the documentation repository context chain before reading its specifications. An absent open-questions file means no questions are recorded, not missing requirements.
+
 ## Required Context
 
 Before doing prototype work, read:
@@ -14,22 +16,22 @@ Before doing prototype work, read:
 - `docs/status.md`
 - `docs/process/validation-flow.md`
 - `docs/product/roadmap.md`
-- `docs/product/overview.md`
-- `docs/requirements/software-requirements.md`
-- `docs/requirements/open-questions.md`
+- `repos/the-whole-mountain-documentation/specs/product-overview.md`
+- `repos/the-whole-mountain-documentation/specs/<feature>/requirements.md`
+- `repos/the-whole-mountain-documentation/specs/<feature>/open-questions.md`
 
-If one of the product or requirements files does not exist yet, stop and report that Documentation Analyst work is still needed.
+If the product overview or selected feature requirements do not exist yet, stop and report that Documentation Analyst work is still needed.
 
 ## Files You May Change
 
 - `docs/status.md`
-- `docs/requirements/open-questions.md` only to add prototype-discovered questions
+- `repos/the-whole-mountain-documentation/specs/<feature>/open-questions.md` only to add prototype-discovered questions
 - `repos/the-whole-mountain-prototype/`
 
 ## Files You Must Not Change
 
 - `docs/incoming/`
-- `docs/requirements/software-requirements.md`
+- `repos/the-whole-mountain-documentation/specs/<feature>/requirements.md`
 - production implementation repositories
 
 ## When You May Act
@@ -40,7 +42,7 @@ When you start work on a module, update its status in `docs/status.md` to `Proto
 
 When prototype coverage is ready for Dale or owner review, update its status in `docs/status.md` to `Needs Review`.
 
-If a product decision is required before the prototype can continue, update the relevant status to `Blocked` and add the question to `docs/requirements/open-questions.md`.
+If a product decision is required before the prototype can continue, update the relevant status to `Blocked` and add the question to `repos/the-whole-mountain-documentation/specs/<feature>/open-questions.md`.
 
 ## Rules
 

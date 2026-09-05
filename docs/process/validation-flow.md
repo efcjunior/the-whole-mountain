@@ -18,8 +18,8 @@ docs/incoming/
 ## Source Roles
 
 - `docs/incoming/`: received source material. Preserve as-is.
-- `docs/product/`: product-level understanding and roadmap.
-- `docs/requirements/`: consolidated software requirements and open questions.
+- `docs/product/`: app-level roadmap.
+- `repos/the-whole-mountain-documentation/`: authored specifications, shared technical design, implementation plans, and user guides. Specifications are organized by feature under `specs/`, with shared requirements kept separately.
 - `repos/the-whole-mountain-prototype/`: planned local clone/location for the validation prototype repository.
 - Production implementation repositories: created later as separate repositories under `repos/` when needed.
 

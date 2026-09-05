@@ -25,17 +25,21 @@ Primary input:
 
 Do not modify files inside `docs/incoming/`.
 
+Paths below are relative to the app root. Replace `<feature>` with the relevant roadmap module slug. Follow the documentation repository context chain before authoring specifications.
+
 ## Files You May Change
 
+- `repos/the-whole-mountain-documentation/specs/cross-cutting-requirements.md`
+- Feature context files within `repos/the-whole-mountain-documentation/specs/` and their parent context links.
 - `docs/status.md`
-- `docs/product/overview.md`
-- `docs/requirements/software-requirements.md`
-- `docs/requirements/open-questions.md`
+- `repos/the-whole-mountain-documentation/specs/product-overview.md`
+- `repos/the-whole-mountain-documentation/specs/<feature>/requirements.md`
+- `repos/the-whole-mountain-documentation/specs/<feature>/open-questions.md`
 
 ## Files You Must Not Change
 
 - `docs/incoming/`
-- `repos/`
+- Other repositories under `repos/`
 - application or prototype source code
 
 ## When You May Act
@@ -44,7 +48,7 @@ You may work when `docs/status.md` shows documentation or requirements work assi
 
 When a module has enough confirmed requirements for prototype validation, update that module in `docs/status.md` to `Ready for Prototype`.
 
-If unresolved decisions prevent useful prototyping or requirements work, update the relevant status to `Blocked` and record the issue in `docs/requirements/open-questions.md`.
+If unresolved decisions prevent useful prototyping or requirements work, update the relevant status to `Blocked` and record the issue in `repos/the-whole-mountain-documentation/specs/<feature>/open-questions.md`.
 
 ## Rules
 
@@ -92,8 +96,8 @@ Allowed statuses should follow `docs/process/validation-flow.md`.
 
 ## Output Expectations
 
-`docs/product/overview.md` should explain the app at a product level: purpose, users, workflows, scope, current status, and validation approach.
+`repos/the-whole-mountain-documentation/specs/product-overview.md` should explain the app at a product level: purpose, users, workflows, scope, current status, and validation approach.
 
-`docs/requirements/software-requirements.md` should describe what the software must do, organized enough for implementation planning and prototype validation.
+`repos/the-whole-mountain-documentation/specs/<feature>/requirements.md` should describe what the software must do, organized enough for implementation planning and prototype validation.
 
-`docs/requirements/open-questions.md`, when created, should contain only unresolved questions and decisions needed from the project owner.
+`repos/the-whole-mountain-documentation/specs/<feature>/open-questions.md`, when created, should contain only unresolved questions and decisions needed from the project owner.
