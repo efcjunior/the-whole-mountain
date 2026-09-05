@@ -26,7 +26,7 @@ The agreed interpretation is:
 
 | Area | Status | Owner | Next Step |
 | --- | --- | --- | --- |
-| Product overview | Draft | Documentation Analyst | Create `repos/the-whole-mountain-documentation/specs/product-overview.md`. |
+| Product overview | Needs Review | Documentation Analyst | Review `repos/the-whole-mountain-documentation/specs/product-overview.md` with the project owner. |
 | Software requirements | Draft | Documentation Analyst | Create `repos/the-whole-mountain-documentation/specs/<feature>/requirements.md` with stable requirement IDs. |
 | Open questions | Draft | Documentation Analyst | Create `repos/the-whole-mountain-documentation/specs/<feature>/open-questions.md`. |
 | Documentation repository | Draft | Documentation Analyst | Local repository initialized at `repos/the-whole-mountain-documentation/`; author specifications by module. |
